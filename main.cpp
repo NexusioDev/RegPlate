@@ -34,16 +34,20 @@ wstring utf8_to_wstring(const string& str) {
 wstring to_uppercase(const wstring& str) {
     wstring result;
     for (wchar_t c : str) {
-        if (c == L'ä') result += L'Ä';
-        else if (c == L'ö') result += L'Ö';
-        else if (c == L'ü') result += L'Ü';
-        else result += towupper(c);
+        switch (c) {
+            case 0x00E4: result += (wchar_t)0x00C4; break; // ä -> Ä
+            case 0x00F6: result += (wchar_t)0x00D6; break; // ö -> Ö
+            case 0x00FC: result += (wchar_t)0x00DC; break; // ü -> Ü
+            case 0x00DF: result += L"SS"; break;          // ß -> SS (Besonderheit im Deutschen)
+            default: 
+                result += towupper(c); 
+                break;
+        }
     }
     return result;
 }
 
 int main() {
-    // WICHTIG: Nur _O_U16TEXT verwenden, KEIN SetConsoleCP(CP_UTF8) mischen!
     _setmode(_fileno(stdin), _O_U16TEXT);
     _setmode(_fileno(stdout), _O_U16TEXT);
 
