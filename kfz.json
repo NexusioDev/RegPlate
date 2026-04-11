@@ -15,5 +15,10 @@
     "IN": "Ingolstadt",
     "J": "Jena",
     "K": "Köln",
-    "M": "München"
+    "L": "Leipzig",
+    "M": "München",
+    "N": "Nürnberg",
+    "OB": "Oberhausen",
+    "S": "Stuttgart",
+    "WOB": "Wolfsburg"
   }
