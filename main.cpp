@@ -11,7 +11,7 @@
 using json = nlohmann::json; 
 using namespace std; 
 
-enum Language { Deutsch, English }; 
+enum Language { Deutsch, English };
 
 // Hilfsfunktion: UTF-16 zu UTF-8 (für JSON-Lookup)
 string wstring_to_utf8(const wstring& wstr) {
@@ -89,9 +89,22 @@ int main() {
 
         bool found = false;
         if (data.contains(lookup)) {
-            // Ergebnis aus JSON (UTF-8) in wstring konvertieren für wcout
-            string city_utf8 = data[lookup];
-            wcout << input_up << L": " << utf8_to_wstring(city_utf8) << endl;
+            auto& entry = data[lookup];
+            if (entry.is_object()) {
+                string city_utf8 = entry["name"];
+                wcout << input_up << L": " << utf8_to_wstring(city_utf8) << endl;
+                if (entry.contains("funfact")) {
+                    string funfact_utf8 = entry["funfact"];
+                    wcout << utf8_to_wstring(funfact_utf8) << endl;
+                }
+                if (entry.contains("bundesland")) {
+                    string bundesland_utf8 = entry["bundesland"];
+                    wcout << "Bundesland: " << utf8_to_wstring(bundesland_utf8) << endl;
+                }
+            } else {
+                string city_utf8 = data[lookup];
+                wcout << input_up << L": " << utf8_to_wstring(city_utf8) << endl;
+            }
             found = true;
         } else {
             // Fallback für Ä -> A, Ö -> O, Ü -> U
