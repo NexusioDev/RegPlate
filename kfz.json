@@ -1,16 +1,21 @@
 {
     "A":{
         "name": "Augsburg",
-        "bundesland": "Bayern",
-        "einwohner": "300000"
+        "bundesland": 2,
+        "einwohner": "300.000"
     },
     "B":{
         "name": "Berlin",
-        "bundesland": "Berlin",
-        "einwohner": "3000000",
+        "bundesland": 3,
+        "einwohner": "3.000.000",
         "funfact": "Hauptstadt von Deutschland"
     },
-    "BI": "Bielefeld",
+    "BI":{
+        "name": "Bielefeld",
+        "bundesland": 1,
+        "einwohner": "340.000",
+        "funfact": "Zentrum der Leinenindustrie"
+    },
     "C": "Chemnitz",
     "D": "Düsseldorf",
     "E": "Essen",

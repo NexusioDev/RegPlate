@@ -47,6 +47,19 @@ wstring to_uppercase(const wstring& str) {
     return result;
 }
 
+string getBundesland(int index, Language lang) {
+    if (index == 1 && lang == Language::Deutsch) return "Nordrhein-Westfalen";
+    else if (index == 1 && lang == Language::English) return "North Rhine-Westphalia";
+    if (index == 2 && lang == Language::Deutsch) return "Bayern";
+    else if (index == 2 && lang == Language::English) return "Bavaria";
+    if (index == 3 && lang == Language::Deutsch) return "Berlin";
+    else if (index == 3 && lang == Language::English) return "Berlin";
+    if (index == 4 && lang == Language::Deutsch) return "Sachsen";
+    else if (index == 4 && lang == Language::English) return "Saxony";
+
+    return "Deutschland";
+}
+
 int main() {
     _setmode(_fileno(stdin), _O_U16TEXT);
     _setmode(_fileno(stdout), _O_U16TEXT);
@@ -98,8 +111,8 @@ int main() {
                     wcout << utf8_to_wstring(funfact_utf8) << endl;
                 }
                 if (entry.contains("bundesland")) {
-                    string bundesland_utf8 = entry["bundesland"];
-                    wcout << "Bundesland: " << utf8_to_wstring(bundesland_utf8) << endl;
+                    int bundesland_utf8 = entry["bundesland"];
+                    wcout << L"Bundesland: " << utf8_to_wstring(getBundesland(entry["bundesland"], lang)) << endl;
                 }
             } else {
                 string city_utf8 = data[lookup];
