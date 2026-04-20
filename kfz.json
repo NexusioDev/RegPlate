@@ -19,7 +19,8 @@
     "C":{
         "name": "Chemnitz",
         "bundesland": 4,
-        "einwohner": "340.000"
+        "einwohner": "245.600",
+        "funfact": "Drittgrößte Stadt Sachsens"
     },
     "D": "Düsseldorf",
     "E": "Essen",
